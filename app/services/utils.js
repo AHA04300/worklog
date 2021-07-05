@@ -49,14 +49,14 @@ exports.createUserInDatabase = function (user, password) {
       "sessionend": formatted
     }
     // INSERT
-    dbo.collection("log").insertOne(log, function (err, res) {
-      if (err) throw err;
-      db.close();
-    });
-    dbo.collection("credentials").insertOne(credentials, function (err, res) {
-      if (err) throw err;
-      db.close();
-    });
+    // dbo.collection("log").insertOne(log, function (err, res) {
+    //   if (err) throw err;
+    //   db.close();
+    // });
+    // dbo.collection("credentials").insertOne(credentials, function (err, res) {
+    //   if (err) throw err;
+    //   db.close();
+    // });
 
     const result = dbo.collection("credentials").findOne({"username": user,
     "user_id": "userId"}, function (err, res) {
