@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const router = express.Router();
 router.use(express.static(path.join(__dirname, '../public')));
 const get_worklog_data_service = require('../services/worklog/get_worklog_data_service');
+const createUserService = require('../services/user/create_user_service.js');
+
 const { use } = require('./login');
 
 router.use(bodyParser.urlencoded({
@@ -21,6 +23,7 @@ router.get('/:user', function(req, res, next) {
 
 router.put('/create', (req, res) => {
   console.log('ユーザーを作成',req.body);
+  const result = createUserService.createUser(req.body.username,req.body.password)
   // ステータスコード200:OKを送信
   res.sendStatus(200);
 });
